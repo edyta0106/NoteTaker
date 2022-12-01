@@ -21,8 +21,13 @@ router.post("/notes", (req, res) => {
   res.json(db);
 });
 
-// router.delete("/notes/:id", (req, res) => {
-
-// });
+router.delete("/notes/:id", (req, res) => {
+  const id = req.params.id;
+  // if (!title || !text) {
+  //   throw new Error("note title and text cannot be blank");
+  // }
+  const filteredNote = notes.filter((note) => note.id !== id);
+  fs.writeFileSync("./db/db.json", JSON.stringify(filteredNote));
+});
 
 module.exports = router;
