@@ -28,6 +28,7 @@ router.delete("/notes/:id", (req, res) => {
   // }
   const filteredNote = notes.filter((note) => note.id !== id);
   fs.writeFileSync("./db/db.json", JSON.stringify(filteredNote));
+  res.json(db);
 });
 
 module.exports = router;
