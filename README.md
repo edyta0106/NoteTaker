@@ -31,10 +31,10 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete
 
 The following video link demonstartes the functionality of the Note Taker:
 
-[Note Taker]()
+[Note Taker](https://shielded-sierra-78661.herokuapp.com/)
 
 The following images show the web application's appearance and functionality:
 
-![Existing notes are listed in the left-hand column with empty fields on the right-hand side for the new note’s title and text.]()
+![Existing notes are listed in the left-hand column with empty fields on the right-hand side for the new note’s title and text.](./images/Existing%20notes%20on%20left.png)
 
-![Note titled “Balance accounts” reads, “Balance account books by end of day Monday,” with other notes listed on the left.]()
+![Note titled “Test 2” reads, “Testing again,” with other notes listed on the left.](./images/Contents%20of%20Note%202.png)
