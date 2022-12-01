@@ -1,27 +1,28 @@
 const router = require("express").Router();
-const store = require("../db/store");
+const util = require("util");
+const fs = require("fs");
+const uuid = require("uuid/v1");
+const db = require("../db/db.json"); //array of obj
 
 router.get("/notes", (req, res) => {
-  store
-    .getNotes()
-    .then((notes) => {
-      return res.json(notes);
-    })
-    .catch((err) => res.status(500).json(err));
+  //   const data = fs.readFileSync("./db/db.json", "utf8");
+  //   res.json(JSON.parse(data));
+  res.json(db);
 });
 
 router.post("/notes", (req, res) => {
-  store
-    .addNote(req.body)
-    .then((note) => res.json(note))
-    .catch((err) => res.status(500).json(err));
+  const { title, text } = req.body;
+  if (!title || !text) {
+    throw new Error("note title and text cannot be blank");
+  }
+  const newNote = { title, text, id: uuid() };
+  db.push(newNote);
+  fs.writeFileSync("./db/db.json", JSON.stringify(db));
+  res.json(db);
 });
 
-router.delete("/notes/:id", (req, res) => {
-  store
-    .removeNote(req.params.id)
-    .then(() => res.json({ ok: true }))
-    .catch((err) => res.status(500).json(err));
-});
+// router.delete("/notes/:id", (req, res) => {
+
+// });
 
 module.exports = router;
